@@ -7,14 +7,14 @@ function UserItem({ user, handler, handlerIsLoading }) {
     const { name, _id, avatar } = user
 
     return (
-        <ListItem 
-            
-            >
+        <ListItem
+
+        >
             <Stack direction={"row"}
                 alignItems={"center"}
                 spacing={"1rem"}
                 width={"100%"}
-               
+
             >
 
                 <Avatar />
@@ -28,12 +28,12 @@ function UserItem({ user, handler, handlerIsLoading }) {
                         WebkitBoxOrient: "vertical",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
-                        width:"100%",
+                        width: "100%",
                     }}
                 >
                     {name}
-
                 </Typography>
+
                 <IconButton
                     size='small'
                     sx={{
@@ -45,10 +45,10 @@ function UserItem({ user, handler, handlerIsLoading }) {
                     }}
                     onClick={() => handler(_id)}
                     disabled={handlerIsLoading}
-
                 >
                     <AddIcon />
                 </IconButton>
+                
             </Stack>
         </ListItem>
     )
