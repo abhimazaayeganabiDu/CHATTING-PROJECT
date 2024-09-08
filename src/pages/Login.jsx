@@ -94,11 +94,10 @@ function Login() {
                   <Button
 
                     sx={{
-                      backgroundColor: "blue",
                       color: "white",
                       marginTop: "1rem"
                     }}
-                    varient="contained"
+                    variant='contained'
                     type='submit'
                     fullWidth
 
@@ -242,7 +241,7 @@ function Login() {
                     sx={{
                       marginTop: "1rem"
                     }}
-                    varient="contained"
+                    variant='contained'
                     color="primary"
                     type='submit'
                     fullWidth
