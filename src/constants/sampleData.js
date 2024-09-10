@@ -8,7 +8,7 @@ export const sampleChats = [{
     members: ["1", "2"],
 },
 {
-    avatar: ["https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
+    avatar: [
         "https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid"],
     name: "John Boi",
     _id: "2",
@@ -53,19 +53,35 @@ export const sampleNotifications = [
 
 export const sampleMessage = [
     {
-        attachments:[
+        attachments: [
             {
-                public_id:"asdgfd",
-                url:"https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+                public_id: "asdgfd",
+                url: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
             },
         ],
-        content:"L*uda ka message hai",
-        _id:"sdfeigdfdfff",
-        sender:{
-            _id:"user._id",
-            name:"Chaman chutia"
+        content: "L*uda ka message hai",
+        _id: "sdfeigdfdfff",
+        sender: {
+            _id: "user._id",
+            name: "Chaman chutia"
         },
-        chat:"chatId",
-        createdAt:"2024-04-23T10:30:34.230X",
+        chat: "chatId",
+        createdAt: "2024-04-23T10:30:34.230X",
+    },
+    {
+        attachments: [
+            {
+                public_id: "asdgfd",
+                url: "https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid"
+            },
+        ],
+        content: "L*uda2 ka message hai",
+        _id: "sdfeigdfdfff2",
+        sender: {
+            _id: "fdkfjdid",
+            name: "Chaman"
+        },
+        chat: "chatId",
+        createdAt: "2024-04-23T10:30:34.230X",
     },
 ]
