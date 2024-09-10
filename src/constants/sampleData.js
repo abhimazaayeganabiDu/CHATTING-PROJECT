@@ -50,3 +50,22 @@ export const sampleNotifications = [
         _id: "2",
     }
 ]
+
+export const sampleMessage = [
+    {
+        attachments:[
+            {
+                public_id:"asdgfd",
+                url:"https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+            },
+        ],
+        content:"L*uda ka message hai",
+        _id:"sdfeigdfdfff",
+        sender:{
+            _id:"user._id",
+            name:"Chaman chutia"
+        },
+        chat:"chatId",
+        createdAt:"2024-04-23T10:30:34.230X",
+    },
+]
