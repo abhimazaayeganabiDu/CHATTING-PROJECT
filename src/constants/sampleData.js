@@ -4,7 +4,7 @@ export const sampleChats = [{
     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
     name: "Aditya Gupta",
     _id: "1",
-    groupChat: false,
+    groupChat: true,
     members: ["1", "2"],
 },
 {
