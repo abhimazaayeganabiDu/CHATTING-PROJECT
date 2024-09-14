@@ -20,6 +20,8 @@ function Chatlist({
         <Stack
             width={w}
             direction={"column"}
+            overflow={"auto"}
+            height={"100vh"}
         >
             {
                 chats?.map((data, index) => {

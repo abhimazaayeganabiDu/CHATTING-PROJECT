@@ -9,6 +9,9 @@ function AvatarCard({avatar = [],max = 4}) {
     >
         <AvatarGroup
             max={max}
+            sx={{
+                position:"relative"
+            }}
         >
             <Box width={"5rem"} height={"3rem"}>
                 {avatar.map((i,index) =>(
