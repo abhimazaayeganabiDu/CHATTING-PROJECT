@@ -1,7 +1,7 @@
 import { Close as CloseIcon, Dashboard as DashboardIcon, ExitToApp as ExitToAppIcon, Groups as GroupsIcon, ManageAccounts as ManageAccountsIcon, Menu as MenuIcon, Message as MessageIcon } from '@mui/icons-material'
 import { Box, Drawer, Grid, IconButton, Stack, styled, Typography, } from '@mui/material'
 import React, { useState } from 'react'
-import { useLocation, Link as LinkComponent } from 'react-router-dom'
+import { useLocation, Link as LinkComponent, Navigate } from 'react-router-dom'
 import { grayColor, matBlack } from '../../../constants/color'
 
 const Link = styled(LinkComponent)`
@@ -23,17 +23,17 @@ const adminTabs = [
     },
     {
         name: "Users",
-        path: "/hidden/admin/users-management",
+        path: "/hidden/admin/users",
         icon: <ManageAccountsIcon />
     },
     {
         name: "Chats",
-        path: "/hidden/admin/chats-management",
+        path: "/hidden/admin/chats",
         icon: <GroupsIcon />
     },
     {
         name: "Messages",
-        path: "/hidden/admin/messages-management",
+        path: "/hidden/admin/messages",
         icon: <MessageIcon />
     },
 ]
@@ -111,6 +111,8 @@ const Sidebar = ({ w = "100%" }) => {
     </Stack>
 }
 
+const isAdmin = true;
+
 function AdminLayout({ children }) {
 
     const [isMobile, setIsMobile] = useState(false)
@@ -118,6 +120,8 @@ function AdminLayout({ children }) {
     const handleMobile = () => setIsMobile((prev) => !prev)
 
     const handleClose = () => setIsMobile(false)
+
+    if(!isAdmin) return <Navigate to="/hidden/admin" />;
 
     return (
         <Grid
