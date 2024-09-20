@@ -64,7 +64,7 @@ function DashBoard() {
       Icon={<GroupIcon />}
     />
     <Widget
-      title={"Messages"}
+      title={"Messages"} 
       value={34}
       Icon={<MessageIcon />}
     />

@@ -2,90 +2,90 @@
 
 export const sampleChats = [
     {
-    avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-    name: "Aditya Gupta",
-    _id: "1",
-    groupChat: true,
-    members: ["1", "2"],
-},
+        avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+        name: "Aditya Gupta",
+        _id: "1",
+        groupChat: true,
+        members: ["1", "2"],
+    },
     {
-    avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-    name: "Aditya Gupta",
-    _id: "2",
-    groupChat: true,
-    members: ["1", "2"],
-},
+        avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+        name: "Aditya Gupta",
+        _id: "2",
+        groupChat: true,
+        members: ["1", "2"],
+    },
     {
-    avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-    name: "Aditya Gupta",
-    _id: "3",
-    groupChat: true,
-    members: ["1", "2"],
-},
+        avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+        name: "Aditya Gupta",
+        _id: "3",
+        groupChat: true,
+        members: ["1", "2"],
+    },
     {
-    avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-    name: "Aditya Gupta",
-    _id: "4",
-    groupChat: true,
-    members: ["1", "2"],
-},
+        avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+        name: "Aditya Gupta",
+        _id: "4",
+        groupChat: true,
+        members: ["1", "2"],
+    },
     {
-    avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-    name: "Aditya Gupta",
-    _id: "5",
-    groupChat: true,
-    members: ["1", "2"],
-},
+        avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+        name: "Aditya Gupta",
+        _id: "5",
+        groupChat: true,
+        members: ["1", "2"],
+    },
     {
-    avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-    name: "Aditya Gupta",
-    _id: "6",
-    groupChat: true,
-    members: ["1", "2"],
-},
-//     {
-//     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-//     name: "Aditya Gupta",
-//     _id: "7",
-//     groupChat: true,
-//     members: ["1", "2"],
-// },
-//     {
-//     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-//     name: "Aditya Gupta",
-//     _id: "8",
-//     groupChat: true,
-//     members: ["1", "2"],
-// },
-//     {
-//     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-//     name: "Aditya Gupta",
-//     _id: "9",
-//     groupChat: true,
-//     members: ["1", "2"],
-// },
-//     {
-//     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-//     name: "Aditya Gupta",
-//     _id: "1o",
-//     groupChat: true,
-//     members: ["1", "2"],
-// },
-//     {
-//     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
-//     name: "Aditya Gupta",
-//     _id: "11",
-//     groupChat: true,
-//     members: ["1", "2"],
-// },
-// {
-//     avatar: [
-//         "https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid"],
-//     name: "John Boi",
-//     _id: "12",
-//     groupChat: true,
-//     members: ["1", "2"]
-// }
+        avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+        name: "Aditya Gupta",
+        _id: "6",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    //     {
+    //     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+    //     name: "Aditya Gupta",
+    //     _id: "7",
+    //     groupChat: true,
+    //     members: ["1", "2"],
+    // },
+    //     {
+    //     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+    //     name: "Aditya Gupta",
+    //     _id: "8",
+    //     groupChat: true,
+    //     members: ["1", "2"],
+    // },
+    //     {
+    //     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+    //     name: "Aditya Gupta",
+    //     _id: "9",
+    //     groupChat: true,
+    //     members: ["1", "2"],
+    // },
+    //     {
+    //     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+    //     name: "Aditya Gupta",
+    //     _id: "1o",
+    //     groupChat: true,
+    //     members: ["1", "2"],
+    // },
+    //     {
+    //     avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+    //     name: "Aditya Gupta",
+    //     _id: "11",
+    //     groupChat: true,
+    //     members: ["1", "2"],
+    // },
+    // {
+    //     avatar: [
+    //         "https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid"],
+    //     name: "John Boi",
+    //     _id: "12",
+    //     groupChat: true,
+    //     members: ["1", "2"]
+    // }
 ]
 
 export const sampleUsers = [
@@ -156,3 +156,27 @@ export const sampleMessage = [
         createdAt: "2024-04-23T10:30:34.230X",
     },
 ]
+
+
+export const dashboardData = {
+    users: [
+        {
+            name: "Aditya Gupta",
+            avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+            _id: "1",
+            username:"sdffef_dfjei",
+            friends:23,
+            groups:5,
+
+        },
+        {
+            name: "John Boi",
+            avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+            _id: "2",
+            username:"sdffef_dfjei",
+            friends:26,
+            groups:8,
+        },
+
+    ]
+}
