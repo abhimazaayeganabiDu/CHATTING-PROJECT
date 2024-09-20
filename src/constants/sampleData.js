@@ -164,19 +164,65 @@ export const dashboardData = {
             name: "Aditya Gupta",
             avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
             _id: "1",
-            username:"sdffef_dfjei",
-            friends:23,
-            groups:5,
+            username: "sdffef_dfjei",
+            friends: 23,
+            groups: 5,
 
         },
         {
             name: "John Boi",
             avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
             _id: "2",
-            username:"sdffef_dfjei",
-            friends:26,
-            groups:8,
+            username: "sdffef_dfjei",
+            friends: 26,
+            groups: 8,
         },
 
+    ],
+    chats: [
+        {
+            name: "The Boys Group",
+            avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+            _id: "1",
+            groupChat: false,
+            members: [
+                {
+                    _id: "1",
+                    avatar: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+                },
+                {
+                    _id: "2",
+                    avatar: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+                }
+            ],
+            totalMembers: 2,
+            totalMessages: 20,
+            creater: {
+                name: "John Doe",
+                avatar: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+            },
+        },
+        {
+            name: "L*da Luston Group",
+            avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+            _id: "2",
+            groupChat: true,
+            members: [
+                {
+                    _id: "1",
+                    avatar: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+                },
+                {
+                    _id: "2",
+                    avatar: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+                }
+            ],
+            totalMembers: 2,
+            totalMessages: 20,
+            creater: {
+                name: "John Doe",
+                avatar: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+            },
+        },
     ]
 }
