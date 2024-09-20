@@ -4,6 +4,7 @@ import { Box, Container, Input, Paper, Stack, Typography } from '@mui/material'
 import { AdminPanelSettings as AdminPanelSettingsIcon, Group as GroupIcon, Message as MessageIcon, Notifications as NotificationsIcon, Person as PersonIcon } from '@mui/icons-material'
 import moment from 'moment'
 import { CurveButton, SearchField } from '../../components/styles/StyledComponents'
+import { DoughnutChart, LineChart } from '../../components/specific/Chart'
 
 function DashBoard() {
 
@@ -80,9 +81,21 @@ function DashBoard() {
 
 
         <Stack
-          direction={"row"}
-          spacing={"2rem"}
+          direction={
+            {
+              xs: "column",
+              lg: "row"
+            }
+          }
           flexWrap={"wrap"}
+          justifyContent={"center"}
+          alignItems={{
+            xs: "center",
+            lg: "stretch"
+          }}
+          sx={{
+            gap: "2rem"
+          }}
         >
           <Paper
             elevation={3}
@@ -91,14 +104,19 @@ function DashBoard() {
               borderRadius: "1rem",
               width: "100%",
               maxWidth: "45rem",
-              height: "25rem"
+
             }}
           >
             <Typography
+              margin={"2rem 0"}
+              variant='h4'
             >
               Last Messages
             </Typography>
+
+            <LineChart value={[1, 2, 33, 67, 27, 31]} />
           </Paper>
+
 
           <Paper
             elevation={3}
@@ -112,17 +130,18 @@ function DashBoard() {
               position: "relative",
               width: "100%",
               maxWidth: "25rem",
-              height: "25rem"
             }}
           >
-
-            {"Dougnut Chart"}
+            <DoughnutChart
+              labels={["Single Chats ", "Group Chats"]}
+              value={[23, 55]}
+            />
 
             <Stack
               position={"absolute"}
               direction={"row"}
-              alignItems={"center"}
               justifyContent={"center"}
+              alignItems={"center"}
               spacing={"0.5rem"}
               width={"100%"}
               height={"100%"}
@@ -146,29 +165,30 @@ function DashBoard() {
 
 const Widget = ({ title, value, Icon }) => (
   <Paper
-  sx={{
-    padding:"2rem",
-    margin:"2rem 0",
-    borderRadius:"1rem",
-    width:"20rem"
+    elevation={3}
+    sx={{
+      padding: "2rem",
+      margin: "2rem 0",
+      borderRadius: "1rem",
+      width: "20rem"
 
-  }}
+    }}
   >
     <Stack
       alignItems={"center"}
       spacing={"1rem"}
     >
       <Typography
-      sx={{
-        color:"rgba(0,0,0,0.7)",
-        borderRadius:"50%",
-        border:`5px solid rgba(0,0,0,0.9)`,
-        width:"5rem",
-        height:"5rem",
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center"
-      }}
+        sx={{
+          color: "rgba(0,0,0,0.7)",
+          borderRadius: "50%",
+          border: `5px solid rgba(0,0,0,0.9)`,
+          width: "5rem",
+          height: "5rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
       >{value}</Typography>
       <Stack>
         {Icon}
