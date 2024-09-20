@@ -224,5 +224,36 @@ export const dashboardData = {
                 avatar: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
             },
         },
+    ],
+    messages: [
+        {
+            attachments: [],
+            content: "L*da ka message hai",
+            _id: "dfjsdijfewifjdfd",
+            sender: {
+                avatar: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
+                name: "Chaman"
+            },
+            chat: "chatId",
+            groupChat: false,
+            createdAt: "2024-09-12T10:41:30.630Z"
+        },
+        {
+            attachments: [
+                {
+                    public_id: "sfdjfd",
+                    url: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+                },
+            ],
+            content: "",
+            _id: "dfjsdiifjdfd",
+            sender: {
+                avatar: "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
+                name: "Chaman2"
+            },
+            chat: "chatId",
+            groupChat: true,
+            createdAt: "2024-09-12T10:41:30.630Z"
+        },
     ]
 }
