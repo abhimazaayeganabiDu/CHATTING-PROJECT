@@ -30,4 +30,7 @@ const getLast7Days = () => {
     return last7Days;
 }
 
+
+
+
 export { fileFormat, transformImage, getLast7Days }
