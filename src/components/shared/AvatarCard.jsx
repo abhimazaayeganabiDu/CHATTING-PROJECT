@@ -3,6 +3,7 @@ import { Avatar, AvatarGroup, Stack, Box} from '@mui/material'
 import { transformImage} from '../../lib/features'
 
 function AvatarCard({avatar = [],max = 4}) {
+    
   return (
     <Stack 
         direction={"row"} spacing={0.5}

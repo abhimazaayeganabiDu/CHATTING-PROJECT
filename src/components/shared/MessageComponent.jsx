@@ -12,6 +12,8 @@ function MessageComponent({ message, user }) {
 
   const sameSender = sender?._id === user?._id
 
+  
+
   return (
     <div
       style={{

@@ -1,28 +1,46 @@
-import { Button, Dialog, DialogTitle, Stack, TextField, Typography } from '@mui/material';
+import { Button, Dialog, DialogTitle, Skeleton, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { sampleUsers } from '../../constants/sampleData';
 import UserItem from '../shared/UserItem';
-import {useInputValidation} from '6pp'
+import { useInputValidation } from '6pp'
+import { useDispatch } from 'react-redux';
+import { useAvaliableFriendsQuery } from '../../redux/api/api';
+import { useErrors } from '../../lib/hooks/hook';
 
 function NewGroup() {
-  const [members,setMembers] = useState(sampleUsers)
+  const dispatch = useDispatch();
 
-  const [selectedMembers,setSelectedMembers] = useState([])
+  const { isError, isLoading, error, data } = useAvaliableFriendsQuery()
+
+  const groupName = useInputValidation("");
+
+  const [selectedMembers, setSelectedMembers] = useState([])
+
+  console.log(data);
+  
+
+  const errors = [{
+    isError,
+    error
+  }]
+
+  useErrors(errors)
 
   const selectMemberHandler = (id) => {
-    setSelectedMembers(prev =>prev.includes(id) 
-    ? prev.filter((currentElement) => currentElement!== id)
-    : [...prev,id])
+    setSelectedMembers(prev => prev.includes(id)
+      ? prev.filter((currentElement) => currentElement !== id)
+      : [...prev, id])
   }
-  
-  const submitHandler = () =>{
+
+  const submitHandler = () => {
+    // console.log(groupName.value,selectedMembers);
+    
   }
 
   const closeHandler = () => {
 
   }
 
-  const groupName = useInputValidation("");
 
   return (
     <Dialog open onClose={closeHandler}>
@@ -32,19 +50,20 @@ function NewGroup() {
           New Group
         </DialogTitle>
 
-        <TextField label= "Group Name" value={groupName.value} onChange={groupName.changeHandler}/>
+        <TextField label="Group Name" value={groupName.value} onChange={groupName.changeHandler} />
 
         <Typography variant='body1'> Members</Typography>
 
         <Stack>
-          {members.map((i) => (
-            <UserItem
-              user={i}
-              key={i._id}
-              handler={selectMemberHandler}
-              isAdded = {selectedMembers.includes(i._id)}
-            /> 
-          ))}
+          {isLoading ? (<Skeleton />) : (
+            data?.friends?.map((i) => (
+              <UserItem
+                user={i}
+                key={i._id}
+                handler={selectMemberHandler}
+                isAdded={selectedMembers.includes(i._id)}
+              />
+            )))}
         </Stack>
 
         <Stack direction={"row"} justifyContent={'space-evenly'}>

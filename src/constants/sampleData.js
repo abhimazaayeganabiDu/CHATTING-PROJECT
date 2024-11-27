@@ -90,13 +90,13 @@ export const sampleChats = [
 
 export const sampleUsers = [
     {
-        avatar: ["https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"],
+        avatar: ["https://res.cloudinary.com/drbkrbpkz/image/upload/v1732609047/f33f534e-5bf1-4536-9105-48e3d940ce6b.jpg"],
         name: "Aditya Gupta",
         _id: "1",
     },
     {
-        avatar: ["https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
-            "https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid"],
+        avatar: ["https://res.cloudinary.com/drbkrbpkz/image/upload/v1732609047/f33f534e-5bf1-4536-9105-48e3d940ce6b.jpg",
+            "https://res.cloudinary.com/drbkrbpkz/image/upload/v1732609047/f33f534e-5bf1-4536-9105-48e3d940ce6b.jpg"],
         name: "John Boi",
         _id: "2",
     }

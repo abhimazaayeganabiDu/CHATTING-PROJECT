@@ -7,7 +7,8 @@ import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
 import { server } from './constants/config'
 import { useDispatch, useSelector } from 'react-redux'
-import { userNOtExists } from './redux/reducer/auth'
+import { userExists, userNOtExists } from './redux/reducer/auth'
+import { SocektProvider } from './socket'
 
 
 const Home = lazy(() => import("./pages/Home"))
@@ -30,8 +31,8 @@ function App() {
   const disPatch = useDispatch()
 
   useEffect(() => {
-    axios.get(`${server}/api/v1/users/me`)
-      .then(res => console.log(res))
+    axios.get(`${server}/api/v1/users/me`,{withCredentials:true})
+      .then(({data}) => disPatch(userExists(data.user)))
       .catch((err) => disPatch(userNOtExists()))
 
   }, [disPatch])
@@ -42,7 +43,7 @@ function App() {
       <BrowserRouter>
         <Suspense fallback={<LayoutLoader />}>
           <Routes>
-            <Route element={<ProtectRoute user={user} />}>
+            <Route element={<SocektProvider><ProtectRoute user={user} /></SocektProvider>}>
               <Route path='/' element={<Home />} />
               <Route path='/chat/:chatId' element={<Chat />} />
               <Route path='/groups' element={<Groups />} />

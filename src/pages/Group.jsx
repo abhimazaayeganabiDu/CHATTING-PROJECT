@@ -7,6 +7,9 @@ import { Link } from '../components/styles/StyledComponents'
 import AvatarCard from '../components/shared/AvatarCard'
 import { sampleChats, sampleUsers } from '../constants/sampleData'
 import UserItem from '../components/shared/UserItem'
+import { useMyGroupsQuery } from '../redux/api/api'
+import { useErrors } from '../lib/hooks/hook'
+import { LayoutLoader } from '../components/layout/Loaders'
 
 
 const ConformDeleteDialog = lazy(() => import("../components/dialogs/ConformDeleteDialog"))
@@ -16,18 +19,29 @@ const isAddMember = false;
 
 function Group() {
   const chatId = useSearchParams()[0].get("group")
-  // console.log(chatId);
-
   const navigate = useNavigate()
-  const navigateBack = () => {
-    navigate("/")
-  }
+
+  const myGroups = useMyGroupsQuery("")
+
+  // console.log(myGroups.data);
+  
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [groupName, setGroupName] = useState("Group Name")
   const [groupNameUpdatedValue, setGroupNameUpdatedValue] = useState("")
   const [conformDeleteDialog, setConformDeleteDialog] = useState(false)
+
+  const errors = [{
+    isError: myGroups.isError,
+    error: myGroups.error,
+  }]
+
+  useErrors(errors)
+
+  const navigateBack = () => {
+    navigate("/")
+  }
 
   const handleMobile = () => {
     setIsMobileMenuOpen((prev) => !prev)
@@ -40,7 +54,6 @@ function Group() {
   const updateGroupName = () => {
     setIsEdit(false);
     console.log(groupNameUpdatedValue);
-
   }
 
   const openConformDeleteHandler = () => {
@@ -76,46 +89,47 @@ function Group() {
   }, [chatId])
 
 
+  const IconBtns = (
+    <>
 
-
-  const IconBtns = <>
-
-    <Box
-      sx={{
-        display: {
-          xs: "block",
-          sm: "none",
-          position: "fixed",
-          right: "1rem",
-          top: "1rem"
-        }
-      }}
-    >
-      <IconButton
-        onClick={handleMobile}
-      >
-        <MenuIcon />
-      </IconButton>
-    </Box>
-
-    <Tooltip title="back">
-      <IconButton
+      <Box
         sx={{
-          position: "absolute",
-          top: "2rem",
-          left: "2rem",
-          bgcolor: matBlack,
-          color: "white",
-          ":hover": {
-            bgcolor: "rgba(0,0,0,0.7)"
-          },
+          display: {
+            xs: "block",
+            sm: "none",
+            position: "fixed",
+            right: "1rem",
+            top: "1rem"
+          }
         }}
-        onClick={navigateBack}
       >
-        <KeyboardBackSpaceIcon />
-      </IconButton>
-    </Tooltip>
-  </>
+        <IconButton
+          onClick={handleMobile}
+        >
+          <MenuIcon />
+        </IconButton>
+      </Box>
+
+      <Tooltip title="back">
+        <IconButton
+          sx={{
+            position: "absolute",
+            top: "2rem",
+            left: "2rem",
+            bgcolor: matBlack,
+            color: "white",
+            ":hover": {
+              bgcolor: "rgba(0,0,0,0.7)"
+            },
+          }}
+          onClick={navigateBack}
+        >
+          <KeyboardBackSpaceIcon />
+        </IconButton>
+      </Tooltip>
+    </>
+  )
+
 
   const GroupName = <Stack
     direction={"row"}
@@ -167,7 +181,7 @@ function Group() {
   </Stack>
 
 
-  return (
+  return myGroups.isLoading ? <LayoutLoader /> : (
     <Grid
       container
       height={"100vh"}
@@ -224,6 +238,7 @@ function Group() {
               height={"50vh"}
               overflow={"auto"}
             >
+
               {/* {Members} */}
 
               {
@@ -291,7 +306,7 @@ const GroupList = ({ w = "100%", myGroups = [], chatId }) => (
     width={w}
     sx={{
       backgroundImage: bgGradiant,
-      height:"100%"
+      height: "100%"
     }}
   >
     {
