@@ -76,4 +76,5 @@ export {
     InputBox, 
     SearchField, 
     BouncingSkeleton,
+    CurveButton
 }

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import authSlice, { userExists, userNOtExists } from "./auth";
 
 const initialState = {
  isNewGroup:false,

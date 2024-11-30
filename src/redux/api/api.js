@@ -107,48 +107,57 @@ const api = createApi({
         }),
 
         newGroup: builder.mutation({
-            query: ({name,members}) => ({
+            query: ({ name, members }) => ({
                 url: "chats/new",
                 method: "POST",
                 credentials: "include",
-                body: {name , members},
+                body: { name, members },
             }),
             invalidatesTags: ["Chat"]
         }),
 
         renameGroup: builder.mutation({
-            query: ({chatId, name}) => ({
+            query: ({ chatId, name }) => ({
                 url: `chats/${chatId}`,
                 method: "PUT",
                 credentials: "include",
-                body: {name},
+                body: { name },
             }),
             invalidatesTags: ["Chat"]
         }),
 
         removeGroupMember: builder.mutation({
-            query: ({chatId, userId}) => ({
+            query: ({ chatId, userId }) => ({
                 url: `chats/removemember`,
                 method: "PUT",
                 credentials: "include",
-                body: {chatId, userId},
+                body: { chatId, userId },
             }),
             invalidatesTags: ["Chat"]
         }),
 
         addGroupMembers: builder.mutation({
-            query: ({members, chatId}) => ({
+            query: ({ members, chatId }) => ({
                 url: `chats/addmembers`,
                 method: "PUT",
                 credentials: "include",
-                body: {members, chatId},
+                body: { members, chatId },
             }),
             invalidatesTags: ["Chat"]
         }),
 
         deleteChat: builder.mutation({
-            query: ( chatId) => ({
+            query: (chatId) => ({
                 url: `chats/${chatId}`,
+                method: "DELETE",
+                credentials: "include",
+            }),
+            invalidatesTags: ["Chat"]
+        }),
+
+        leaveGroup: builder.mutation({
+            query: (chatId) => ({
+                url: `chats/leave/${chatId}`,
                 method: "DELETE",
                 credentials: "include",
             }),
@@ -175,6 +184,7 @@ export const {
     useRenameGroupMutation,
     useRemoveGroupMemberMutation,
     useAddGroupMembersMutation,
-    useDeleteChatMutation
+    useDeleteChatMutation,
+    useLeaveGroupMutation
 
 } = api
