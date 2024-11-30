@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { setIsFileMenu } from '../redux/reducer/misc';
 import { removeNewMessagesAlert } from '../redux/reducer/chat';
 import { TypingLoader } from '../components/layout/Loaders';
+import { useNavigate } from 'react-router-dom';
 
 
 function Chat({ chatId, user }) {
@@ -22,6 +23,7 @@ function Chat({ chatId, user }) {
   const bottomRef = useRef(null);
   const socket = getSocket()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [message, setMessage] = useState("")
   const [messages, setMessages] = useState([])
@@ -94,6 +96,10 @@ function Chat({ chatId, user }) {
     if (bottomRef.current) bottomRef.current.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
+  useEffect(()=> {
+    if(!chatDetails.data?.chat) return navigate("/") 
+  },[chatDetails.data])
+
   const newMessagesListener = useCallback((data) => {
     if (data.chatId !== chatId) return
     setMessages((prev) => [...prev, data.message])
@@ -117,7 +123,8 @@ function Chat({ chatId, user }) {
     [chatId]
   )
 
-  const alertListener = useCallback((data) => {
+  const alertListener = useCallback(
+    (data) => {
     const messageForAlert = {
       content: data,
       sender: {

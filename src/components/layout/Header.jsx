@@ -8,7 +8,7 @@ import { server } from '../../constants/config'
 import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { userNOtExists } from '../../redux/reducer/auth'
-import { setIsMobile, setIsNotification, setIsSearch } from '../../redux/reducer/misc'
+import { setIsMobile, setIsNewGroup, setIsNotification, setIsSearch } from '../../redux/reducer/misc'
 import { resetNotificationCount } from '../../redux/reducer/chat'
 
 const SearchDialog = lazy(() => import("../specific/Search"))
@@ -17,10 +17,9 @@ const NewGroupDialog = lazy(() => import("../specific/NewGroup"))
 
 function Header() {
 
-  const { isSearch, isNotification } = useSelector((state) => state.misc)
+  const { isSearch, isNotification, isNewGroup  } = useSelector((state) => state.misc)
   const { notificationCount } = useSelector((state) => state.chat)
 
-  const [isNewGroup, setIsNewGroup] = useState(false);
 
   const navigate = useNavigate()
 
@@ -33,7 +32,7 @@ function Header() {
   const openSearch = () => { disPatch(setIsSearch(true)) }
 
   const openNewGroup = () => {
-    setIsNewGroup(prev => !prev)
+    disPatch(setIsNewGroup(true))
   }
 
   const logoutHandler = async () => {

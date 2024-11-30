@@ -4,14 +4,14 @@ import Title from '../shared/Title'
 import { Drawer, Grid, Skeleton } from "@mui/material"
 import Chatlist from '../specific/Chatlist'
 import { sampleChats } from '../../constants/sampleData'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Profile from '../specific/Profile'
 import { useMyChatsQuery } from '../../redux/api/api'
 import { useDispatch, useSelector } from 'react-redux'
 import { setIsMobile } from '../../redux/reducer/misc'
 import { useErrors, useSocketEvents } from '../../lib/hooks/hook'
 import { getSocket } from '../../socket'
-import { NEW_MESSAGE_ALERT, NEW_REQUEST } from '../../constants/event'
+import { NEW_MESSAGE_ALERT, NEW_REQUEST, REFETCH_CHATS } from '../../constants/event'
 import { incrementNotification, setNewMessagesAlert } from '../../redux/reducer/chat'
 import { getOrSaveFromStorage } from '../../lib/features'
 
@@ -22,14 +22,14 @@ const AppLayout = () => WrappedComponent => {
         const params = useParams();
         const chatId = params.chatId;
         const dispatch = useDispatch()
-
+        const navigate = useNavigate()
         const { isMobile } = useSelector((state) => state.misc)
         const { user } = useSelector((state) => state.auth)
         const { newMessagesAlert } = useSelector((state) => state.chat)
 
         const socket = getSocket()
 
-        const { isLoading, data, isError, error, } = useMyChatsQuery("")
+        const { isLoading, data, isError, error, refetch } = useMyChatsQuery("")
 
         useErrors([{ isError, error }])
 
@@ -50,13 +50,19 @@ const AppLayout = () => WrappedComponent => {
 
         }, [chatId])
 
-        const newRequestHandler = useCallback(() => {
+        const newRequestListener= useCallback(() => {
             dispatch(incrementNotification())
         }, [dispatch])
 
+        const refetchListener = useCallback(() => {
+            refetch()
+            navigate("/")
+        }, [refetch, navigate])
+
         const eventHandlers = {
             [NEW_MESSAGE_ALERT]: newMessageAlartHandler,
-            [NEW_REQUEST]: newRequestHandler
+            [NEW_REQUEST]: newRequestListener,
+            [REFETCH_CHATS]: refetchListener
         }
         useSocketEvents(socket, eventHandlers)
 

@@ -3,27 +3,24 @@ import React, { useState } from 'react';
 import { sampleUsers } from '../../constants/sampleData';
 import UserItem from '../shared/UserItem';
 import { useInputValidation } from '6pp'
-import { useDispatch } from 'react-redux';
-import { useAvaliableFriendsQuery } from '../../redux/api/api';
-import { useErrors } from '../../lib/hooks/hook';
+import { useDispatch, useSelector } from 'react-redux';
+import { useAvaliableFriendsQuery, useNewGroupMutation } from '../../redux/api/api';
+import { useAsyncMutations, useErrors } from '../../lib/hooks/hook';
+import {setIsNewGroup} from '../../redux/reducer/misc'
+import toast from 'react-hot-toast';
 
 function NewGroup() {
   const dispatch = useDispatch();
 
+  const {isNewGroup} = useSelector(state => state.misc)
   const { isError, isLoading, error, data } = useAvaliableFriendsQuery()
-
+  const [newGroup, newGroupLoading  ] = useAsyncMutations(useNewGroupMutation)
   const groupName = useInputValidation("");
-
   const [selectedMembers, setSelectedMembers] = useState([])
-
-  console.log(data);
-  
-
   const errors = [{
     isError,
     error
   }]
-
   useErrors(errors)
 
   const selectMemberHandler = (id) => {
@@ -33,17 +30,20 @@ function NewGroup() {
   }
 
   const submitHandler = () => {
-    // console.log(groupName.value,selectedMembers);
+    if(!groupName.value) return toast.error("Group name is required")
+    if(selectedMembers.length < 2) return toast.error("Please select atleast 3 members ")
+      newGroup("Creating New Group ...",{name:groupName.value, members:selectedMembers})
+    closeHandler()
     
   }
 
   const closeHandler = () => {
-
+    dispatch(setIsNewGroup(false))
   }
 
 
   return (
-    <Dialog open onClose={closeHandler}>
+    <Dialog onClose={closeHandler} open = {isNewGroup}>
       <Stack p={{ xs: "1rem", sm: "3rem" }} width={"25rem"} spacing={"2rem"}>
 
         <DialogTitle textAlign={"center"} variant='h4'>
@@ -67,8 +67,8 @@ function NewGroup() {
         </Stack>
 
         <Stack direction={"row"} justifyContent={'space-evenly'}>
-          <Button varient=" text " color="error" size='large' >Cancel</Button>
-          <Button variant="contained" size='large' onClick={submitHandler}>Create</Button>
+          <Button varient=" text " color="error" size='large' onClick={closeHandler} >Cancel</Button>
+          <Button variant="contained" size='large' onClick={submitHandler} disabled = {newGroupLoading}>Create</Button>
         </Stack>
       </Stack>
     </Dialog>
