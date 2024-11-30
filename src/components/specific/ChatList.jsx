@@ -1,6 +1,6 @@
-import React from 'react'
-import { Stack } from '@mui/material'
-import ChatItem from '../shared/ChatItem'
+import { Stack } from '@mui/material';
+import React from 'react';
+import ChatItem from '../shared/ChatItem';
 
 function Chatlist({
     w = " 100% ",
@@ -40,7 +40,7 @@ function Chatlist({
                         groupChat={groupChat}
                         sameSender={chatId === _id}
                         handleDeleteChat={handleDeleteChat}
- 
+
                     />
 
                 })

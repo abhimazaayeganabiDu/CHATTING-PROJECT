@@ -23,7 +23,9 @@ import { usernameValidator } from '../utils/Validators'
 
 function Login() {
 
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const [isLogin, setIsLogin] = useState(true)
 
   const toggleLogin = () => setIsLogin((prev) => !prev)
 
@@ -39,6 +41,9 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    const toastId = toast.loading("Logging In ...")
+    
+    setIsLoading(true)
     const config = {
       withCredentials: true,
       headers: {
@@ -53,15 +58,24 @@ function Login() {
       },
         config
       )
-      dispatch(userExists(true))
-      toast.success(data.message)
+      dispatch(userExists(data.user))
+      toast.success(data.message,{
+        id:toastId
+      })
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something Went Wrong")
+      toast.error(error?.response?.data?.message || "Something Went Wrong",{
+        id:toastId
+      })
+    } finally {
+      setIsLoading(false)
     }
   }
-
+  
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
+
+    const toastId = toast.loading("Signing Up...")
 
     const formData = new FormData()
     formData.append("avatar", avatar.file);
@@ -82,10 +96,16 @@ function Login() {
         formData,
         config
       )
-      dispatch(userExists(true))
-      toast.success(data.message)
+      dispatch(userExists(data.user))
+      toast.success(data.message,{
+        id:toastId
+      })
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something Went Wrong")
+      toast.error(error?.response?.data?.message || "Something Went Wrong",{
+        id:toastId
+      })
+    } finally {
+      setIsLoading(false)
     }
 
   }
@@ -160,7 +180,7 @@ function Login() {
                       variant='contained'
                       type='submit'
                       fullWidth
-
+                      disabled={isLoading}
                     >
                       Login
                     </Button>
@@ -172,7 +192,7 @@ function Login() {
 
 
                     <Button
-
+                      disabled={isLoading}
                       variant='text'
                       fullWidth
                       onClick={toggleLogin}
@@ -305,6 +325,7 @@ function Login() {
                       color="primary"
                       type='submit'
                       fullWidth
+                      disabled={isLoading}
                     >
                       Sign Up
                     </Button>
@@ -317,6 +338,7 @@ function Login() {
 
                     <Button
 
+                      disabled={isLoading}
                       variant='text'
                       fullWidth
                       onClick={toggleLogin}

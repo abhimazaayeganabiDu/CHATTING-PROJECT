@@ -1,21 +1,21 @@
+import { useInfiniteScrollTop } from '6pp';
 import { AttachFile as AttachFileIcon, Send as SendIcon, } from '@mui/icons-material';
 import { IconButton, Skeleton, Stack } from '@mui/material';
 import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import FileMenu from '../components/dialogs/FileMenu';
 import AppLayout from '../components/layout/AppLayout';
+import { TypingLoader } from '../components/layout/Loaders';
 import MessageComponent from '../components/shared/MessageComponent';
 import { InputBox } from '../components/styles/StyledComponents';
 import { grayColor, orange } from '../constants/color';
 import { ALERT, NEW_MESSAGE, START_TYPING, STOP_TYPING } from '../constants/event';
 import { useErrors, useSocketEvents } from '../lib/hooks/hook';
 import { useChatDetailsQuery, useGetMessagesQuery } from '../redux/api/api';
-import { useInfiniteScrollTop } from '6pp'
-import { getSocket } from '../socket';
-import { useDispatch } from 'react-redux';
-import { setIsFileMenu } from '../redux/reducer/misc';
 import { removeNewMessagesAlert } from '../redux/reducer/chat';
-import { TypingLoader } from '../components/layout/Loaders';
-import { useNavigate } from 'react-router-dom';
+import { setIsFileMenu } from '../redux/reducer/misc';
+import { getSocket } from '../socket';
 
 
 function Chat({ chatId, user }) {
@@ -96,9 +96,9 @@ function Chat({ chatId, user }) {
     if (bottomRef.current) bottomRef.current.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
-  useEffect(()=> {
-    if(!chatDetails.data?.chat) return navigate("/") 
-  },[chatDetails.data])
+  useEffect(() => {
+    if (chatDetails.isError) return navigate("/")
+  }, [chatDetails.isError])
 
   const newMessagesListener = useCallback((data) => {
     if (data.chatId !== chatId) return
@@ -125,17 +125,18 @@ function Chat({ chatId, user }) {
 
   const alertListener = useCallback(
     (data) => {
-    const messageForAlert = {
-      content: data,
-      sender: {
-        _id: " kfjdkfjdikhf",
-        name: "Admin",
-      },
-      chat: chatId,
-      createdAt: new Date().toISOString(),
-    };
-    setMessages((prev) => [...prev, messageForAlert])
-  },
+      if(data.chatId !== chatId) return ;
+      const messageForAlert = {
+        content: data.message,
+        sender: {
+          _id: " kfjdkfjdikhf",
+          name: "Admin",
+        },
+        chat: chatId,
+        createdAt: new Date().toISOString(),
+      };
+      setMessages((prev) => [...prev, messageForAlert])
+    },
     [chatId]
   )
 
