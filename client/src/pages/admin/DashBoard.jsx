@@ -64,7 +64,7 @@ function DashBoard() {
       Icon={<GroupIcon />}
     />
     <Widget
-      title={"Messages"} 
+      title={"Messages"}
       value={34}
       Icon={<MessageIcon />}
     />
@@ -102,8 +102,8 @@ function DashBoard() {
             sx={{
               padding: "2rem 3.5rem",
               borderRadius: "1rem",
-              width: "100%",
-              maxWidth: "45rem",
+              
+              maxWidth: "66%",
 
             }}
           >
@@ -128,8 +128,9 @@ function DashBoard() {
               alignItems: "center",
               width: { xs: "100%", sm: "50%" },
               position: "relative",
-              width: "100%",
-              maxWidth: "25rem",
+              
+              maxWidth: "34%",
+
             }}
           >
             <DoughnutChart

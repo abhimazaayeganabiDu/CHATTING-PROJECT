@@ -12,14 +12,18 @@ import {
 import { bgGradiant } from '../../constants/color'
 import { useInputValidation } from '6pp'
 import { Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { adminLogin } from '../../redux/thunks/admin';
 
-const isAdmin = true;
 
 function AdminLogin() {
 
+    const {isAdmin} = useSelector(state=>state.auth)
+    const disPatch = useDispatch()
+
     const submitHandler = (e) => {
         e.preventDefault()
-        console.log("submit");
+        disPatch(adminLogin(secretKey.value))
     }
 
     if(isAdmin) return <Navigate to={"/hidden/admin/dashbord"}/>

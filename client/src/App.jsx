@@ -1,12 +1,11 @@
+import axios from 'axios'
 import React, { lazy, Suspense, useEffect } from 'react'
-import { BrowserRouter, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
+import { useDispatch, useSelector } from 'react-redux'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ProtectRoute from './components/auth/ProtectRoute'
 import { LayoutLoader } from './components/layout/Loaders'
-import { LineAxisOutlined } from '@mui/icons-material'
-import axios from 'axios'
-import { Toaster } from 'react-hot-toast'
 import { server } from './constants/config'
-import { useDispatch, useSelector } from 'react-redux'
 import { userExists, userNOtExists } from './redux/reducer/auth'
 import { SocektProvider } from './socket'
 
@@ -31,8 +30,8 @@ function App() {
   const disPatch = useDispatch()
 
   useEffect(() => {
-    axios.get(`${server}/api/v1/users/me`,{withCredentials:true})
-      .then(({data}) => disPatch(userExists(data.user)))
+    axios.get(`${server}/api/v1/users/me`, { withCredentials: true })
+      .then(({ data }) => disPatch(userExists(data.user)))
       .catch((err) => disPatch(userNOtExists()))
 
   }, [disPatch])
