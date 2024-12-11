@@ -102,8 +102,8 @@ function DashBoard() {
             sx={{
               padding: "2rem 3.5rem",
               borderRadius: "1rem",
-              
-              maxWidth: "66%",
+              width: "100%",
+              maxWidth: "45rem",
 
             }}
           >
@@ -128,9 +128,7 @@ function DashBoard() {
               alignItems: "center",
               width: { xs: "100%", sm: "50%" },
               position: "relative",
-              
-              maxWidth: "34%",
-
+              maxWidth: "25rem",
             }}
           >
             <DoughnutChart
