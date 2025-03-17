@@ -3,7 +3,6 @@ import { ErrorHandler } from '../utils/utility.utils.js'
 
 const validateHandler = (req, res, next) => {
     const errors = validationResult(req)
-
     const errorMessages = errors.array().map((error) => error.msg).join(", ")
 
     console.log(errorMessages);
