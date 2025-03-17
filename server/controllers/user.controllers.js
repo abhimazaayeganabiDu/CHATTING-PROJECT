@@ -33,7 +33,6 @@ const register = TryCatch(async (req, res, next) => {
         avatar: userAvatar,
     })
     
-    console.log("user1",user);
     sendToken(res, user, 201, "User created sucessfully")
 })
 

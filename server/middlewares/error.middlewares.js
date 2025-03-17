@@ -32,12 +32,13 @@ const errorMiddleware = (err, req, res, next) => {
 
 }
 
-const TryCatch = (passedFunction) => async (req, res, next) => {
-    try {
-        await passedFunction(req, res, next)
-    } catch (error) {
-        next(error)
-    }
+const TryCatch = (passedFunction) => 
+    async (req, res, next) => {
+        try {
+            await passedFunction(req, res, next)
+        } catch (error) {
+            next(error)
+        }
 }
 
 

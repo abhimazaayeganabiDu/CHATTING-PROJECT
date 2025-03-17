@@ -49,4 +49,4 @@ function Chatlist({
     )
 }
 
-export default Chatlist
+export {Chatlist}
