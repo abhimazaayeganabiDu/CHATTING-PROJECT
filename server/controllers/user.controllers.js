@@ -82,9 +82,12 @@ const searchUser = TryCatch(async (req, res) => {
         members: req.user
     })
 
+    
+    
     // Get all users (my friends) from my chats includes me
     const allUsersFromMyChats = myChats.flatMap((chat) => chat.members)
-
+    allUsersFromMyChats.push(req.user)
+    
     // Get all users expect me and my friends 
     const allUsersExpectMeAndFriends = await User.find({
         _id: { $nin: allUsersFromMyChats },
